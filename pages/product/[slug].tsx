@@ -18,7 +18,7 @@ const Product = (data: ProductsType) => {
             <MetaComponent
               key={i}
               title={`${product.title} | ${BRAND_NAME}`}
-              url={`${product.image}`}
+              image={`${product.image}`}
             />
           ))}
           <ProductComponent {...data} />

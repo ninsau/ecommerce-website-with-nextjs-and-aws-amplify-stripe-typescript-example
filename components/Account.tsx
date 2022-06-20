@@ -43,22 +43,23 @@ const AccountComponent = (email: any) => {
                       new Date(item.updatedAt as unknown as number),
                       "MMM dd yyyy"
                     )}`}</p>
-                    {/* <div className="flex text-sm font-medium">
-                      <a
-                        href={item.slug}
-                        className="text-green-600 hover:text-green-500"
-                      >
-                        Manage item
-                      </a>
-                      <div className="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
+                    <div className="flex text-sm font-medium">
+                      <span>
+                        Status:{" "}
+                        <span className="text-green-600 hover:text-green-500">
+                          {" "}
+                          {item.tracking}
+                        </span>
+                      </span>
+                      {/* <div className="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
                         <a
                           href={item.slug}
                           className="text-green-600 hover:text-green-500"
                         >
                           View Invoice
                         </a>
-                      </div>
-                    </div> */}
+                      </div> */}
+                    </div>
                   </div>
                 </div>
 

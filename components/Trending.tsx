@@ -25,6 +25,11 @@ const TrendingProducts: NextPage = () => {
                       src={product.image as unknown as string}
                       alt={`${product.title} image`}
                     />
+                    <div className="flex items-end p-4" aria-hidden="true">
+                      <div className="w-full bg-white bg-opacity-75 backdrop-filter backdrop-blur py-2 px-4 rounded-md text-sm font-medium text-gray-900 text-center">
+                        View Product
+                      </div>
+                    </div>
                   </div>
                   <div className="mt-6">
                     <h3 className="mt-1 font-semibold text-gray-900">

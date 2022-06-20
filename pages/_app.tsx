@@ -26,22 +26,21 @@ function MyApp({
         <Auth>
           <HeaderComponent />
           <Component {...pageProps} />
-          <FooterComponent />
         </Auth>
       ) : (
         <>
           <HeaderComponent />
           <Component {...pageProps} />
-          <FooterComponent />
         </>
       )}
+      <FooterComponent />
     </SessionProvider>
   );
 }
 
 export default MyApp;
 
-const Auth = ({children}: any) => {
+const Auth = ({ children }: any) => {
   // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
   const { status } = useSession({ required: true });
 
