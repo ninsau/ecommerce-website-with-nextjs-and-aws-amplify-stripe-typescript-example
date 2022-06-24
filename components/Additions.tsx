@@ -4,7 +4,7 @@ import { Products } from "../src/models"
   
 const AdditionsComponent = () => {
 
-    const products = useDataWithLimit(Products, 4)
+    const products = useDataWithLimit(Products, 8)
 
     return (
       <div className="bg-white">

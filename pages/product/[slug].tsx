@@ -19,6 +19,7 @@ const Product = (data: ProductsType) => {
               key={i}
               title={`${product.title} | ${BRAND_NAME}`}
               image={`${product.image}`}
+              description={product.description}
             />
           ))}
           <ProductComponent {...data} />
@@ -35,7 +36,9 @@ export async function getServerSideProps({ req, params }: any) {
   const SSR = withSSRContext({ req });
   const data = await SSR.DataStore.query(Products, (item: any) =>
     item.slug("eq", params.slug)
-  );
+  ); 
+  const subscription = SSR.DataStore.observe(Products).subscribe(() => data);
+  subscription.unsubscribe();
 
   return {
     props: { products: JSON.parse(JSON.stringify(data)), slug: params.slug },

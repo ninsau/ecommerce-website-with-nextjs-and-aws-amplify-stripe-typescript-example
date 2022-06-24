@@ -11,6 +11,7 @@ import { collections } from "../lib";
 import TrendingProducts from "./Trending";
 import Link from "next/link";
 import SaleComponent from "./Sale";
+import AdditionsComponent from "./Additions";
 
 const LandingPageComponent: NextPage = () => {
   return (
@@ -139,6 +140,7 @@ const LandingPageComponent: NextPage = () => {
 
             <TestimonialsComponent />
           </div>
+          <AdditionsComponent />
         </main>
       </div>
     </>

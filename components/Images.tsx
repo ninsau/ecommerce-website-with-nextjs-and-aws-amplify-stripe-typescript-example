@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ImageType } from "../lib/types";
+import { HOME_IMAGE_URL } from "../lib";
 
 export const LogoComponent = ({ height, width }: any) => {
   return (
@@ -27,8 +28,8 @@ export const HeroImageComponent = () => {
     //   placeholder="blur"
     // />
     <img
-      src="https://images.unsplash.com/photo-1577193120905-21e0c301d5d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-      alt=""
+      src={HOME_IMAGE_URL}
+      alt="home image"
       className="w-full h-full object-center object-cover"
       loading="lazy"
     />
@@ -55,13 +56,11 @@ export const FeaturedImageComponent = ({ src, alt }: ImageType) => {
 export const DecorativeImageComponent = () => {
   return (
     <Image
-      src="https://images.unsplash.com/photo-1551014700-0ca41391f312?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1773&q=80"
+      src={HOME_IMAGE_URL}
       alt="decoorative background image"
       height={896}
       width={1216}
-      blurDataURL={
-        "https://images.unsplash.com/photo-1551014700-0ca41391f312?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1773&q=80"
-      }
+      blurDataURL={HOME_IMAGE_URL}
       placeholder="blur"
     />
   );

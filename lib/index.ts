@@ -17,6 +17,9 @@ export const BRAND_IMAGE: string =
 export const BRAND_FAVICON: string =
   "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_scale,w_16/v1653917523/fosuaa/fosuaa_logo.webp";
 
+export const HOME_IMAGE_URL: string =
+  "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_pad,w_720/v1656093366/fosuaa/photo-1596040033229-a9821ebd058d_dmxlrs.webp";
+
 export const classNames = (...classes: any) => {
   return classes.filter(Boolean).join(" ");
 };
@@ -51,7 +54,6 @@ export const navigation = {
     { name: "Our Story", href: "/about-us" },
   ],
 };
-
 
 export const footerNavigation: FooterType = {
   products: [
@@ -97,7 +99,7 @@ export const collections: CollectionsType = [
     name: "All",
     description: "Variaties to choose from",
     imageSrc:
-      "https://images.unsplash.com/photo-1577193459085-2da60ca7fd77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_pad,w_389/v1656093820/fosuaa/photo-1606914469633-bd39206ea739_edaiit.webp",
     imageAlt: "all collection of whole foods",
     href: "/collections/all",
   },
@@ -105,7 +107,7 @@ export const collections: CollectionsType = [
     name: "New Arrivals",
     description: "Fresh and restocked",
     imageSrc:
-      "https://images.unsplash.com/photo-1577193459085-2da60ca7fd77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_pad,w_389/v1656094057/fosuaa/photo-1566824099147-bef027d3a333_r32xrt.webp",
     imageAlt: "fresh and restocked collection of whole foods",
     href: "/collections/new",
   },
@@ -113,7 +115,7 @@ export const collections: CollectionsType = [
     name: "On Sale",
     description: "Check out our items on sale",
     imageSrc:
-      "https://images.unsplash.com/photo-1577193459085-2da60ca7fd77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_pad,w_389/v1656094142/fosuaa/photo-1616225273962-05c320ca73d2_ccespp.webp",
     imageAlt: "collections on sale",
     href: "collections/sale",
   },
@@ -123,3 +125,13 @@ export const deliveryMethods = [
   { id: 1, title: "Standard", turnaround: "4–10 business days", price: 5 },
   { id: 2, title: "Express", turnaround: "2–5 business days", price: 16 },
 ];
+
+export const copyText = (url: string) => {
+  navigator.clipboard.writeText(
+    `https://www.fosuaawholegreenfoods.com/product/${url}`
+  );
+};
+
+export const share = (data: any) => {
+  navigator.share(data);
+};

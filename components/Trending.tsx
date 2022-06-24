@@ -4,7 +4,7 @@ import { Products } from "../src/models";
 import { useDataWithLimit } from "../lib/hooks";
 
 const TrendingProducts: NextPage = () => {
-  const products: Products[] = useDataWithLimit(Products, 4);
+  const products: Products[] = useDataWithLimit(Products, 12);
 
   return (
     <>

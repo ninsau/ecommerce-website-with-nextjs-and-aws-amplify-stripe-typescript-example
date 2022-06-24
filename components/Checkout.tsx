@@ -6,12 +6,12 @@ import { CartContentType } from "../lib/types";
 import { BRAND_NAME, classNames, deliveryMethods } from "../lib";
 import { Formik, Field, Form } from "formik";
 import NotificationComponent from "./Notification";
-import { useSession } from "next-auth/react";
 import * as yup from "yup";
 import "yup-phone";
 import { stripeCheckout } from "../lib/api-helper";
 import { DataStore } from "aws-amplify";
 import { Checkout } from "../src/models";
+import { signIn, useSession } from "next-auth/react";
 
 const Custom = (props: any) => <textarea rows={4} name="review" {...props} />;
 
@@ -135,6 +135,27 @@ const CheckoutComponent = () => {
         <div className="bg-gray-50">
           <div className="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <h2 className="sr-only">Checkout</h2>
+
+            {session?.user?.email ? null : (
+              <div className="mb-4">
+                <span
+                  onClick={() => signIn()}
+                  className="w-full mb-4 cursor flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                >
+                  Sign in to track orders
+                </span>
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-gray-300" />
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-2 bg-white text-gray-500">
+                      Or continue as Guest
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <Formik
               validationSchema={ValidationSchema}
