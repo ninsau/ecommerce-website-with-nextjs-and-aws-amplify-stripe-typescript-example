@@ -2,9 +2,11 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { BRAND_IMAGE, classNames, navigation } from "../lib";
+import { useSession } from "next-auth/react";
 
 const LayoutComponent = ({ children }: any) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { data: session } = useSession();
 
   return (
     <>
@@ -109,7 +111,7 @@ const LayoutComponent = ({ children }: any) => {
                         </div>
                         <div className="ml-3">
                           <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
-                            Admin
+                            {session?.user?.name}
                           </p>
                         </div>
                       </div>
@@ -175,7 +177,7 @@ const LayoutComponent = ({ children }: any) => {
                 </div>
                 <div className="ml-3">
                   <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                    Admin
+                    {session?.user?.name}
                   </p>
                 </div>
               </div>

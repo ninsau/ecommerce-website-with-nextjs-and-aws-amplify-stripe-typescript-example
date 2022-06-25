@@ -36,7 +36,7 @@ export const classNames = (...classes: any) => {
 };
 
 export const navigation = [
-  { name: "Dashboard", href: "/", icon: HomeIcon, current: true },
+  { name: "Dashboard", href: "/", icon: HomeIcon, current: false },
   {
     name: "Inventory",
     href: "/inventory",

@@ -9,7 +9,7 @@ import { BRAND_URL, classNames, copyText } from "../lib";
 import { DataStore } from "aws-amplify";
 
 const DashboardComponent = () => {
-  const orders = useDataWithLimit(Checkout, 6);
+  const orders = useDataWithLimit(Checkout, 1000);
   const [open, setOpen] = React.useState(false);
   const [order, setOrder] = React.useState<Checkout | null>(null);
   const [copy, setCopy] = React.useState("Copy");
@@ -18,7 +18,6 @@ const DashboardComponent = () => {
     async (value: string, id: string) => {
       const original = await DataStore.query(Checkout, id);
 
-      console.log(original);
       try {
         await DataStore.save(
           Checkout.copyOf(original!, (updated) => {
