@@ -29,9 +29,7 @@ function MyApp({
         </Auth>
       ) : (
         <>
-          <LayoutComponent>
             <Component {...pageProps} />
-          </LayoutComponent>
         </>
       )}
     </SessionProvider>
