@@ -58,7 +58,6 @@ const DashboardComponent = () => {
     try {
       copyText(final);
       setCopy("Copied!");
-      // setOpen(state);
     } catch (error) {
       console.log(error);
     } finally {
