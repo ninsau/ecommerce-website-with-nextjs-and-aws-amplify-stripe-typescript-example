@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { useData } from "../lib/hooks";
+import { useDataWithLimit } from "../lib/hooks";
 import { Checkout } from "../src/models";
 import { ImageComponent } from "./Images";
 import React, { Fragment } from "react";
@@ -9,7 +9,7 @@ import { BRAND_URL, classNames, copyText } from "../lib";
 import { DataStore } from "aws-amplify";
 
 const DashboardComponent = () => {
-  const orders = useData(Checkout);
+  const orders = useDataWithLimit(Checkout, 6);
   const [open, setOpen] = React.useState(false);
   const [order, setOrder] = React.useState<Checkout | null>(null);
   const [copy, setCopy] = React.useState("Copy");
@@ -18,6 +18,7 @@ const DashboardComponent = () => {
     async (value: string, id: string) => {
       const original = await DataStore.query(Checkout, id);
 
+      console.log(original);
       try {
         await DataStore.save(
           Checkout.copyOf(original!, (updated) => {
@@ -180,9 +181,9 @@ const DashboardComponent = () => {
                                 name="location"
                                 className="block w-full pl-3 pr-10 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"
                                 defaultValue={item.tracking}
-                                onChange={(e) =>
-                                  updateTracking(e.target.value, item.id)
-                                }
+                                // onChange={(e) =>
+                                //   updateTracking(e.target.value, item.id)
+                                // }
                               >
                                 <option>Order placed</option>
                                 <option>Processing</option>
@@ -209,9 +210,9 @@ const DashboardComponent = () => {
                           name="location"
                           className="block w-full pl-3 pr-10 text-base border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"
                           defaultValue={item.tracking}
-                          onChange={(e) =>
-                            updateTracking(e.target.value, item.id)
-                          }
+                          // onChange={(e) =>
+                          //   updateTracking(e.target.value, item.id)
+                          // }
                         >
                           <option>Order placed</option>
                           <option>Processing</option>
