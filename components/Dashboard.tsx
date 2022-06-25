@@ -7,7 +7,6 @@ import { Menu, Transition, Dialog } from "@headlessui/react";
 import { DotsVerticalIcon, CheckIcon } from "@heroicons/react/outline";
 import { BRAND_URL, classNames, copyText } from "../lib";
 import { DataStore } from "aws-amplify";
-import toast, { Toaster } from "react-hot-toast";
 
 const DashboardComponent = () => {
   const orders = useData(Checkout);
@@ -27,9 +26,7 @@ const DashboardComponent = () => {
         );
       } catch (error) {
         console.log(error);
-      } finally {
-        toast.success("Successfully created!");
-      }
+      } 
     },
     []
   );
@@ -41,8 +38,6 @@ const DashboardComponent = () => {
         setOpen(state);
       } catch (error) {
         console.log(error);
-      } finally {
-        toast.success("Successfully created!");
       }
     },
     []
@@ -60,14 +55,11 @@ const DashboardComponent = () => {
       setCopy("Copied!");
     } catch (error) {
       console.log(error);
-    } finally {
-      toast.success("Successfully created!");
-    }
+    } 
   }, []);
 
   return (
     <>
-      {/* <Toaster /> */}
       <div className="bg-white">
         <div className="max-w-6xl mx-auto px-4 py-20 sm:px-6 sm:py-24">
           <div className="max-w-7xl mx-auto sm:px-2 lg:px-8">
