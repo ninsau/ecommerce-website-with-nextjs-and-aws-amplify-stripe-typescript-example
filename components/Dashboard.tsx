@@ -33,7 +33,7 @@ const DashboardComponent = () => {
         );
 
         await orderUpdateMail(original!.email!, value);
-        
+
       } catch (error) {
         console.log(error);
       } finally {
@@ -330,7 +330,7 @@ const DashboardComponent = () => {
                       <div className="mt-2">
                         <p className="text-sm leading-4">Recipient Address </p>
                         <p className="text-sm text-gray-500">
-                          {order?.address}, {order?.address}, {order?.city},{" "}
+                          {order?.address}, {order?.apartment}, {order?.city},{" "}
                           {order?.region}, {order?.country}, {order?.zip}
                         </p>
                       </div>
