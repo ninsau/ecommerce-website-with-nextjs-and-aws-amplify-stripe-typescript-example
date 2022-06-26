@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/api-helper.js", "lib/sendmail.js", "pages/api/auth/sendDeliveryMail.js"],
   "exclude": ["node_modules"]
 }

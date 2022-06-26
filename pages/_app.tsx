@@ -29,7 +29,7 @@ function MyApp({
         </Auth>
       ) : (
         <>
-            <Component {...pageProps} />
+          <Component {...pageProps} />
         </>
       )}
     </SessionProvider>
@@ -40,11 +40,20 @@ export default MyApp;
 
 const Auth = ({ children }: any) => {
   // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
-  const { status } = useSession({ required: true });
+  const { data: session, status } = useSession({ required: true });
 
   if (status === "loading") {
     return <div>Loading...</div>;
   }
 
-  return children;
+  if (
+    status === "authenticated" &&
+    (session?.user?.email === process.env.NEXT_PUBLIC_ADMIN_ONE! ||
+      session?.user?.email === process.env.NEXT_PUBLIC_ADMIN_TWO! ||
+      session?.user?.email === process.env.NEXT_PUBLIC_ADMIN_THRREE!)
+  ) {
+    return children;
+  } else {
+    return <div>You are not authorized to view this page</div>;
+  }
 };

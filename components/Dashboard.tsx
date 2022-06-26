@@ -4,17 +4,22 @@ import { Checkout } from "../src/models";
 import { ImageComponent } from "./Images";
 import React, { Fragment } from "react";
 import { Menu, Transition, Dialog } from "@headlessui/react";
-import { DotsVerticalIcon, CheckIcon, CheckCircleIcon, XIcon } from "@heroicons/react/outline";
+import {
+  DotsVerticalIcon,
+  CheckIcon,
+  CheckCircleIcon,
+  XIcon,
+} from "@heroicons/react/outline";
 import { BRAND_URL, classNames, copyText } from "../lib";
 import { DataStore } from "aws-amplify";
+import { orderUpdateMail } from "../lib/api-helper";
 
 const DashboardComponent = () => {
   const orders = useDataWithLimit(Checkout, 1000);
   const [open, setOpen] = React.useState(false);
   const [order, setOrder] = React.useState<Checkout | null>(null);
   const [copy, setCopy] = React.useState("Copy");
-  const [show, setShow] = React.useState(false)
-
+  const [show, setShow] = React.useState(false);
 
   const updateTracking = React.useCallback(
     async (value: string, id: string) => {
@@ -26,10 +31,13 @@ const DashboardComponent = () => {
             updated.tracking = value;
           })
         );
+
+        await orderUpdateMail(original!.email!, value);
+        
       } catch (error) {
         console.log(error);
-      }finally{
-        setShow(true)
+      } finally {
+        setShow(true);
       }
     },
     []
@@ -367,10 +375,9 @@ const DashboardComponent = () => {
         </Dialog>
       </Transition.Root>
 
+      {/* notification */}
 
-         {/* notification */}
-
-         <div
+      <div
         aria-live="assertive"
         className="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
       >
@@ -390,18 +397,25 @@ const DashboardComponent = () => {
               <div className="p-4">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" />
+                    <CheckCircleIcon
+                      className="h-6 w-6 text-green-400"
+                      aria-hidden="true"
+                    />
                   </div>
                   <div className="ml-3 w-0 flex-1 pt-0.5">
-                    <p className="text-sm font-medium text-gray-900">Successfully updated!</p>
-                    <p className="mt-1 text-sm text-gray-500">Tracking status has been updated.</p>
+                    <p className="text-sm font-medium text-gray-900">
+                      Successfully updated!
+                    </p>
+                    <p className="mt-1 text-sm text-gray-500">
+                      Tracking status has been updated.
+                    </p>
                   </div>
                   <div className="ml-4 flex-shrink-0 flex">
                     <button
                       type="button"
                       className="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       onClick={() => {
-                        setShow(false)
+                        setShow(false);
                       }}
                     >
                       <span className="sr-only">Close</span>
