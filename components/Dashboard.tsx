@@ -56,7 +56,7 @@ const DashboardComponent = () => {
   );
 
   const allowCopy = React.useCallback(async (order: Checkout | null) => {
-    const final = `Recipient Address: ${order?.address}, ${order?.address}, ${order?.city},
+    const final = `Recipient Address: ${order?.address}, ${order?.apartment}, ${order?.city},
     ${order?.region}, ${order?.country}, ${order?.zip} \n\n
     Recipient Name: ${order?.firstName} ${order?.lastName} \n\n
     Recipient Phone: ${order?.phone} \n\n
