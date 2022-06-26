@@ -5,7 +5,6 @@ import config from "../src/aws-exports.js";
 import { useSession, SessionProvider } from "next-auth/react";
 import { NextComponentType } from "next";
 import LayoutComponent from "../components/Layout";
-import Script from "next/script";
 
 Amplify.configure({
   ...config,
@@ -30,13 +29,9 @@ function MyApp({
         </Auth>
       ) : (
         <>
-          <Component {...pageProps} />
+            <Component {...pageProps} />
         </>
       )}
-      <Script
-        src="https://upload-widget.cloudinary.com/global/all.js"
-        type="text/javascript"
-      />
     </SessionProvider>
   );
 }
