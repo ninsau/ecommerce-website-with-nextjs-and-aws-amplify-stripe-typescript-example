@@ -8,11 +8,9 @@ import { ProductImageComponent } from "./Images";
 import { ProductsType } from "../lib/types";
 import { Fragment, useState } from "react";
 import AddToCartComponent from "./AddToCart";
-import { Dialog, Transition } from "@headlessui/react";
 import { copyText, share } from "../lib";
 
 const ProductComponent = (data: ProductsType) => {
-  const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const toggleCopy = (url: string) => {
@@ -141,18 +139,7 @@ const ProductComponent = (data: ProductsType) => {
                     alt={`${product.title} image`}
                   />
                 </div>
-                <div className="mt-4">
-                  <span
-                    onClick={() => setOpen(true)}
-                    className="group cursor inline-flex text-sm text-gray-500 hover:text-gray-700"
-                  >
-                    <span>What do we do if exact item is not available?</span>
-                    <QuestionMarkCircleIcon
-                      className="flex-shrink-0 ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
-                  </span>
-                </div>
+          
               </div>
 
               {/* Product form */}
@@ -162,57 +149,7 @@ const ProductComponent = (data: ProductsType) => {
         </div>
       </div>
 
-      <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={setOpen}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
-
-          <div className="fixed z-10 inset-0 overflow-y-auto">
-            <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                enterTo="opacity-100 translate-y-0 sm:scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              >
-                <Dialog.Panel className="relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
-                  <div>
-                    <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
-                      <CheckIcon
-                        className="h-6 w-6 text-green-600"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <div className="mt-3 text-center sm:mt-5">
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-500">
-                          If the exact flowers, plants, or container you have
-                          selected is unavailable, we will create a beautiful
-                          bouquet with the freshest available plants or flowers.
-                          Only items of equal or higher value will be
-                          substituted.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
-        </Dialog>
-      </Transition.Root>
+     
     </>
   );
 };
